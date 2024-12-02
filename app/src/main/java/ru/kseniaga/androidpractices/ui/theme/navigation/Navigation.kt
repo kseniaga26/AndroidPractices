@@ -1,6 +1,7 @@
 package ru.kseniaga.androidpractices.ui.theme.navigation
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,20 +26,23 @@ import ru.kseniaga.androidpractices.screens.TitleDetailScreen
 import org.koin.androidx.compose.koinViewModel
 import ru.kseniaga.androidpractices.components.TitleViewModel
 import ru.kseniaga.androidpractices.presentation.model.TitleUiModel
-import ru.kseniaga.androidpractices.screens.NotificationsScreen
+import ru.kseniaga.androidpractices.screens.FavoritesScreen
 import ru.kseniaga.androidpractices.screens.PersonalAccountScreen
+import ru.kseniaga.androidpractices.screens.SettingsScreen
 import ru.kseniaga.androidpractices.ui.theme.Pink40
 import ru.kseniaga.androidpractices.ui.theme.PurpleGrey80
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationGraph(navController: NavHostController, modifier: Modifier) {
+fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modifier) {
     var currentDestination by remember { mutableStateOf("title") }
     val viewModel: TitleViewModel = koinViewModel<TitleViewModel>()
     val state = viewModel.viewState
+
     viewModel.viewState.error?.let {
         Text(text = it)
     }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -60,33 +64,32 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier) {
             )
         }
     ) { innerPadding ->
-        NavHost(navController = navController, startDestination = "Home", modifier = modifier,
-            Modifier.padding(innerPadding).toString()
+        NavHost(
+            navController = navController,
+            startDestination = "TitlesList",
+            modifier = modifier.padding(innerPadding) // Применяем отступы от TopAppBar
         ) {
-            composable("Home") { HomeScreen() }
-            composable("Notification") { NotificationsScreen() }
             composable("TitlesList") {
                 currentDestination = "TitlesList"
                 TitleListScreen(viewModel) { movieId ->
-                    navController.navigate("movie_detail/$movieId") {
-                    }
+                    navController.navigate("movie_detail/$movieId")
                 }
             }
             composable("movie_detail/{movieId}") { backStackEntry ->
                 currentDestination = "movie_detail"
                 val id = backStackEntry.arguments?.getString("movieId")?.toLong() ?: 0L
 
-                val movie: TitleUiModel? = id?.let {
-                    state.items.find { it.id == id }
-                }
+                val movie: TitleUiModel? = state.items.find { it.id == id }
 
                 if (movie != null) {
                     TitleDetailScreen(movie)
                 }
             }
-
+            composable("Settings") { SettingsScreen(viewModel) }
             composable("PersonalAccount") { PersonalAccountScreen() }
+            composable("FavoriteList") { FavoritesScreen(navController) }
         }
     }
 }
+
 
