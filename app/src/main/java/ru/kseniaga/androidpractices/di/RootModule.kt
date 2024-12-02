@@ -13,5 +13,5 @@ val rootModule = module {
     single<ITitleRepository> { TitleRepository(get(), get()) }
     factory { TitleResponseToEntityMapper() }
     factory { TitleUiMapper() }
-    viewModel { TitleViewModel(get(), get()) }
+    viewModel { TitleViewModel(get(), get(), get()) }
 }

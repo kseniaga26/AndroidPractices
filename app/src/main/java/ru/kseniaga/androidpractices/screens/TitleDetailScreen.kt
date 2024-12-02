@@ -1,10 +1,12 @@
 package ru.kseniaga.androidpractices.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import coil.compose.rememberImagePainter
@@ -12,12 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 import ru.kseniaga.androidpractices.presentation.model.TitleUiModel
 import ru.kseniaga.androidpractices.ui.theme.Pink40
@@ -152,6 +156,7 @@ fun TitleDetailScreen(title: TitleUiModel)
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = title.description, style = MaterialTheme.typography.bodyLarge, fontFamily = FontFamily.Serif,)
     }
+
 }
 
 
