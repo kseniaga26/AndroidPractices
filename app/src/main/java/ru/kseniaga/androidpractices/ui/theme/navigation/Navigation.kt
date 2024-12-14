@@ -20,12 +20,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.compose.ui.Modifier
+import com.example.consecutivep.presentation.profile.screen.EditProfileScreen
 import ru.kseniaga.androidpractices.screens.TitleListScreen
 import ru.kseniaga.androidpractices.screens.HomeScreen
 import ru.kseniaga.androidpractices.screens.TitleDetailScreen
 import org.koin.androidx.compose.koinViewModel
 import ru.kseniaga.androidpractices.components.TitleViewModel
 import ru.kseniaga.androidpractices.presentation.model.TitleUiModel
+import ru.kseniaga.androidpractices.presentation.profile.screen.ProfileScreen
 import ru.kseniaga.androidpractices.screens.FavoritesScreen
 import ru.kseniaga.androidpractices.screens.PersonalAccountScreen
 import ru.kseniaga.androidpractices.screens.SettingsScreen
@@ -86,7 +88,11 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
                 }
             }
             composable("Settings") { SettingsScreen(viewModel) }
-            composable("PersonalAccount") { PersonalAccountScreen() }
+            composable("PersonalAccount") { ProfileScreen(navController) }
+            composable("edit"){
+                currentDestination = "edit"
+                EditProfileScreen(navController)
+            }
             composable("FavoriteList") { FavoritesScreen(navController) }
         }
     }
