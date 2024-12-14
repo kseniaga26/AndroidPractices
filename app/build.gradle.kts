@@ -1,8 +1,11 @@
+import com.google.protobuf.gradle.id
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp") version "1.9.0-1.0.13"
+    id("com.google.protobuf") version "0.9.4"
 }
 
 android {
@@ -50,6 +53,24 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    protobuf {
+        protoc {
+            artifact = "com.google.protobuf:protoc:3.24.2"
+        }
+        generateProtoTasks {
+            all().forEach { task ->
+                task.builtins {
+                    id("java") {
+                        option("lite")
+                    }
+                    id("kotlin") {
+                        option("lite")
+                    }
+                }
+            }
+        }
+    }
 }
 
 dependencies {
@@ -90,8 +111,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(kotlin("script-runtime"))
-
-
     implementation ("androidx.datastore:datastore-preferences:1.1.1")
     implementation ("androidx.datastore:datastore-preferences-rxjava2:1.1.1")
     implementation ("androidx.datastore:datastore-preferences-rxjava3:1.1.1")
@@ -100,36 +119,28 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     val paging_version = "3.2.0"
-
     implementation("androidx.paging:paging-runtime:$paging_version")
-
     implementation("androidx.paging:paging-compose:1.0.0-alpha20")
 
     val room_version = "2.6.1"
-
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-
-    // To use Kotlin Symbol Processing (KSP)
     ksp("androidx.room:room-compiler:$room_version")
-
-    // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
-
-    // optional - RxJava2 support for Room
     implementation("androidx.room:room-rxjava2:$room_version")
-
-    // optional - RxJava3 support for Room
     implementation("androidx.room:room-rxjava3:$room_version")
-
-    // optional - Guava support for Room, including Optional and ListenableFuture
     implementation("androidx.room:room-guava:$room_version")
-
-    // optional - Test helpers
     testImplementation("androidx.room:room-testing:$room_version")
-
-    // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
-
     implementation("io.insert-koin:koin-android:4.0.0")
+
+    // https://mvnrepository.com/artifact/androidx.datastore/datastore
+    implementation("androidx.datastore:datastore:1.0.0")
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-javalite
+    implementation("com.google.protobuf:protobuf-javalite:3.21.11")
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-kotlin-lite
+    implementation("com.google.protobuf:protobuf-kotlin-lite:3.21.11")
+
 }
