@@ -26,11 +26,7 @@ import ru.kseniaga.androidpractices.presentation.profile.notificationReceiver.No
 import ru.kseniaga.androidpractices.presentation.profile.utils.tryParse
 
 
-class EditProfileViewModel(
-    private val repository: IProfileRepository,
-    private val navigation: NavHostController,
-    private val context: Context
-): ViewModel() {
+class EditProfileViewModel(private val repository: IProfileRepository, private val navigation: NavHostController, private val context: Context): ViewModel() {
 
     private val mutableState = MutableEditProfileState()
     val viewState = mutableState as EditProfileState
@@ -126,15 +122,13 @@ class EditProfileViewModel(
 
         notifyIntent.putExtras(
             Bundle().apply {
-//                putLong("NOTIFICATION_TIME", time)
-//                putInt("NOTIFICATION_ID", notificationModel.id)
                 putString("NOTIFICATION", "Пора на пару, ${viewState.name}!")
             }
         )
 
         val notifyPendingIntent = PendingIntent.getBroadcast(
             context,
-            0, //notificationModel.id,
+            0,
             notifyIntent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -155,7 +149,7 @@ class EditProfileViewModel(
             mutableState.time = LocalTime.parse(mutableState.timeString, formatter)
             mutableState.timeError = null
         } catch (e: Exception) {
-            mutableState.timeError = "Некорректный формат времени"
+            mutableState.timeError = "Incorrect time format"
         }
     }
 

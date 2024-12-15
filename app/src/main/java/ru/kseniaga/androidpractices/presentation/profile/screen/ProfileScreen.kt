@@ -2,7 +2,6 @@ package ru.kseniaga.androidpractices.presentation.profile.screen
 
 import android.annotation.SuppressLint
 import ru.kseniaga.androidpractices.presentation.profile.utils.SystemBroadcastReceiver
-
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
@@ -36,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-
 import org.koin.androidx.compose.koinViewModel
 import ru.kseniaga.androidpractices.R
 import ru.kseniaga.androidpractices.components.ProfileViewModel

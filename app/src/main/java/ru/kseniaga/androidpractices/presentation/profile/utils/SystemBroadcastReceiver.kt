@@ -1,6 +1,5 @@
 package ru.kseniaga.androidpractices.presentation.profile.utils
 
-
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent

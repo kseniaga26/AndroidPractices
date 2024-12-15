@@ -1,6 +1,5 @@
 package ru.kseniaga.androidpractices.components
 
-
 import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
