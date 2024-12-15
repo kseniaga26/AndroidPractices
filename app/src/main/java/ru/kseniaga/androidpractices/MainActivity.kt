@@ -31,9 +31,11 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavController
+import org.koin.android.ext.koin.androidContext
 import ru.kseniaga.androidpractices.components.TitleViewModel
 import ru.kseniaga.androidpractices.presentation.model.TitleUiModel
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.context.startKoin
 import ru.kseniaga.androidpractices.presentation.profile.channelManager.NotificationChannelManager
 import ru.kseniaga.androidpractices.ui.theme.AndroidDevelopAppTheme
 import ru.kseniaga.androidpractices.ui.theme.navigation.BottomNav

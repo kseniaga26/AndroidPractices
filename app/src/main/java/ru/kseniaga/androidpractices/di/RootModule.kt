@@ -1,6 +1,7 @@
 package ru.kseniaga.androidpractices.di
 
 import androidx.datastore.core.DataStore
+import org.koin.android.ext.koin.androidContext
 import ru.kseniaga.androidpractices.data.mapper.TitleResponseToEntityMapper
 import ru.kseniaga.androidpractices.data.repository.TitleRepository
 import ru.kseniaga.androidpractices.domain.ITitleRepository
@@ -22,10 +23,11 @@ val rootModule = module {
     single<ITitleRepository> { TitleRepository(get(), get()) }
     factory { TitleResponseToEntityMapper() }
     factory { TitleUiMapper() }
+    single { ProfileRepository() }
     factory<DataStore<ProfileEntity>>(named("profile")) { DataSourceProvider(get()).provide() }
     single<IProfileRepository> { ProfileRepository() }
     single { DataStoreManager(get()) }
     viewModel { TitleViewModel(get(), get(), get()) }
     viewModel { ProfileViewModel(get()) }
-   // viewModel { EditProfileViewModel(get()) }
+    viewModel { EditProfileViewModel(get(), it.get(), androidContext()) }
 }
