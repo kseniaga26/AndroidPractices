@@ -1,4 +1,4 @@
-package com.example.consecutivep.data.serializer
+package ru.kseniaga.androidpractices.data.serializer
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer

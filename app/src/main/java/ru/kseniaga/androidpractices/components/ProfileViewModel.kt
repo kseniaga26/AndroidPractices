@@ -2,13 +2,12 @@ package ru.kseniaga.androidpractices.components
 
 
 import android.net.Uri
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.consecutivep.presentation.profile.model.state.ProfileState
+import ru.kseniaga.androidpractices.presentation.profile.model.state.ProfileState
 import kotlinx.coroutines.launch
 import ru.kseniaga.androidpractices.domain.IProfileRepository
 

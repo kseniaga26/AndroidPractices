@@ -1,4 +1,4 @@
-package com.example.consecutivep.presentation.profile.model.state
+package ru.kseniaga.androidpractices.presentation.profile.model.state
 
 import android.net.Uri
 

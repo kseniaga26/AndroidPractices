@@ -27,5 +27,5 @@ val rootModule = module {
     single { DataStoreManager(get()) }
     viewModel { TitleViewModel(get(), get(), get()) }
     viewModel { ProfileViewModel(get()) }
-    viewModel { EditProfileViewModel(get()) }
+   // viewModel { EditProfileViewModel(get()) }
 }

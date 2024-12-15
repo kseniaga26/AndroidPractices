@@ -1,7 +1,6 @@
 package ru.kseniaga.androidpractices.ui.theme.navigation
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,16 +19,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.compose.ui.Modifier
-import com.example.consecutivep.presentation.profile.screen.EditProfileScreen
+import ru.kseniaga.androidpractices.presentation.profile.screen.EditProfileScreen
 import ru.kseniaga.androidpractices.screens.TitleListScreen
-import ru.kseniaga.androidpractices.screens.HomeScreen
 import ru.kseniaga.androidpractices.screens.TitleDetailScreen
 import org.koin.androidx.compose.koinViewModel
 import ru.kseniaga.androidpractices.components.TitleViewModel
 import ru.kseniaga.androidpractices.presentation.model.TitleUiModel
 import ru.kseniaga.androidpractices.presentation.profile.screen.ProfileScreen
 import ru.kseniaga.androidpractices.screens.FavoritesScreen
-import ru.kseniaga.androidpractices.screens.PersonalAccountScreen
 import ru.kseniaga.androidpractices.screens.SettingsScreen
 import ru.kseniaga.androidpractices.ui.theme.Pink40
 import ru.kseniaga.androidpractices.ui.theme.PurpleGrey80

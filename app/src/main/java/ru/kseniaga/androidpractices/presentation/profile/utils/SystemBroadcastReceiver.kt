@@ -1,4 +1,4 @@
-package com.example.consecutivep.presentation.profile.utils
+package ru.kseniaga.androidpractices.presentation.profile.utils
 
 
 import android.content.BroadcastReceiver

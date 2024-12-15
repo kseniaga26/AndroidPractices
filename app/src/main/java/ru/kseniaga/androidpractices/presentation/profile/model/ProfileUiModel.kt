@@ -1,4 +1,4 @@
-package com.example.consecutivep.presentation.profile.model
+package ru.kseniaga.androidpractices.presentation.profile.model
 
 import android.net.Uri
 

@@ -27,19 +27,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavController
 import ru.kseniaga.androidpractices.components.TitleViewModel
 import ru.kseniaga.androidpractices.presentation.model.TitleUiModel
 import org.koin.androidx.compose.koinViewModel
+import ru.kseniaga.androidpractices.presentation.profile.channelManager.NotificationChannelManager
 import ru.kseniaga.androidpractices.ui.theme.AndroidDevelopAppTheme
 import ru.kseniaga.androidpractices.ui.theme.navigation.BottomNav
 import ru.kseniaga.androidpractices.ui.theme.navigation.NavigationGraph
 
 class MainActivity : ComponentActivity() {
+
+    private val channelManager: NotificationChannelManager by lazy {
+        NotificationChannelManager(NotificationManagerCompat.from(this), this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        channelManager.createNotificationChannels()
         setContent {
             AndroidDevelopAppTheme {
                 BottomNavExample()

@@ -1,4 +1,4 @@
-package com.example.consecutivep.presentation.profile.notificationReceiver
+package ru.kseniaga.androidpractices.presentation.profile.notificationReceiver
 
 import android.app.NotificationManager
 import android.app.PendingIntent
