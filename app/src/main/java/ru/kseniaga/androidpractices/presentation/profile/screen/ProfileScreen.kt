@@ -1,8 +1,7 @@
 package ru.kseniaga.androidpractices.presentation.profile.screen
 
 import android.annotation.SuppressLint
-import com.example.consecutivep.presentation.profile.utils.SystemBroadcastReceiver
-
+import ru.kseniaga.androidpractices.presentation.profile.utils.SystemBroadcastReceiver
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
@@ -36,12 +35,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-
 import org.koin.androidx.compose.koinViewModel
 import ru.kseniaga.androidpractices.R
 import ru.kseniaga.androidpractices.components.ProfileViewModel
 import java.io.File
-
 
 val DOWNLOAD_COMPLETE_ACTION = "android.intent.action.DOWNLOAD_COMPLETE"
 
@@ -49,10 +46,9 @@ val DOWNLOAD_COMPLETE_ACTION = "android.intent.action.DOWNLOAD_COMPLETE"
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+
     val context = LocalContext.current
-
     InitBroadcastReceiver(context)
-
     val viewModel = koinViewModel<ProfileViewModel>()
     val state = viewModel.viewState
 
@@ -90,12 +86,11 @@ fun ProfileScreen(navController: NavHostController) {
                     context
                 )
             }) {
-                Text(text = "Перейти к резюме")
+                Text(text = "резюме")
             }
         }
     }
 }
-
 
 @Composable
 private fun InitBroadcastReceiver(context: Context) {

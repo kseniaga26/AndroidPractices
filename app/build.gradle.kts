@@ -143,4 +143,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-kotlin-lite
     implementation("com.google.protobuf:protobuf-kotlin-lite:3.21.11")
 
+    // https://mvnrepository.com/artifact/com.jakewharton.threetenabp/threetenabp
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
+
 }
